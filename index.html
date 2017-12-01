@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telphone=no, email=no, address=no" >
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="fonts3/iconfont.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <a href="##">
+                <img src="img/logo.png" alt="">
+            </a>
+            <a href="##">
+                <i class="icon iconfont icon-fangdajing"></i>
+                <i class="icon iconfont icon-gengduo-2"></i>
+            </a>
+        </header>
+        <section class="scroll">
+            <div class="swiper-container ban">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="img/ban1.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/ban2.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/ban3.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/ban4.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/ban5.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/ban6.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="box">
+                <p>
+                    <i class="icon iconfont icon-shoucang1"></i>
+                    <span>全国——必胜客代金券5折GO</span>
+                    <time>2017-11-01</time>
+                </p>
+                <p>
+                    <i class="icon iconfont icon-tongzhi"></i>
+                    <span>关于我行企业掌银暂停服务的公告（11月3）</span>
+                    <time>2017-11-29</time>
+                </p>
+            </div>
+            <div class="boxs">
+                <h3>便捷服务</h3>
+                <ul class="list">
+                    <li>
+                        <i class="icon iconfont icon-tianmao1"></i>
+                        <span>掌上银行下载</span>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-28"></i>
+                        <span>掌上银行下载</span>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-29"></i>
+                        <span>掌上银行下载</span>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-50"></i>
+                        <span>掌上银行下载</span>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-tianmao3"></i>
+                        <span>掌上银行下载</span>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-weixin"></i>
+                        <span>掌上银行下载</span>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-reddit"></i>
+                        <span>掌上银行下载</span>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-yinxiangbiji"></i>
+                        <span>掌上银行下载</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="con">
+                <h3>您的每段旅程，我们全心陪伴</h3>
+                <ul>
+                    <li>学生时代</li>
+                    <li>职场生涯</li>
+                    <li>品质家庭</li>
+                </ul>
+                <img src="img/cons.png" alt="">
+            </div>
+        </section>
+    </div>
+    <script src="js/swiper-3.3.1.min.js"></script>
+    <script src="js/swiper.animate.min.js"></script>
+    <script>
+        new Swiper('.ban',{
+            autoplay:2000,
+            loop:true,
+            pagination:'.swiper-pagination',
+            autoplayDisableOnInteraction:false
+        })
+
+        function ajax(url){
+            return new Promise(function (resolve, reject){
+                var xhr = null;
+                var handler = function(){
+                    if(xhr.readyState !== 4) return;
+                    if(xhr.status === 200){
+                        resolve(xhr.responseText);
+                    }else{
+                        reject(new Error('error')); 
+                    }
+                }
+                if(window.XMLHttpRequest){
+                    xhr =  new XMLHttpRequest();
+                }else{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xhr.open('get',url,true);
+                xhr.send(null);
+                xhr.onreadystatechange = handler;
+            })
+        }
+        ajax("http://localhost:8090/userinfo").then(function(result){
+            console.log(result);
+        }).catch(function(error){
+            console.log(error);
+        })
+    </script>
+</body>
+</html>
